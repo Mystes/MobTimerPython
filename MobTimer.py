@@ -38,13 +38,7 @@ class MobTimer():
 
 		self.root.mainloop()
 
-	def keyPressed(self):
-		pass
-		# todo: figure out a way to get key pressed events work while tkinter frame is withdrawn
-
 	def startTimer(self):
-		
-		#self.root.bind_all('<Key>', self.keyPressed)
 
 		# todo: warn user if input is empty
 		# and dont accept any other string-characters except for h,m,s
@@ -67,7 +61,7 @@ class MobTimer():
 
 				m, s = divmod(round(timer() - start, 2), 60)
 				h, m = divmod(m, 60)
-			 	sys.stdout.write("\rTime: %d:%02d:%02d" % (h, m, s))
+				sys.stdout.write("\rTime: %d:%02d:%02d" % (h, m, s))
 				sys.stdout.flush()
 
 				# sleep to lower CPU usage
@@ -79,7 +73,7 @@ class MobTimer():
 
 			except KeyboardInterrupt:
 				self.delta = self.seconds_to_human(inputParsed - (timer() - start))
-				print "\nInterrupted"
+				print("\nInterrupted")
 				self.root.destroy()
 				self.displayTimer()
 				break
